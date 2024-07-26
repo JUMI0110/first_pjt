@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from faker import Faker
 import random 
 # Create your views here.
 # django -> 함수 첫번째 인자는 항상 request
@@ -8,7 +9,7 @@ def index(request):
     return render(request, 'index.html')
     
 
-def root(request): # 정적 웹
+def root(request): # 정적 웹 
     return render(request, 'root.html')
 
 
@@ -39,3 +40,32 @@ def lotto(request):
         'lotto': lotto
     }
     return render(request, 'lotto.html', context)
+
+
+def username(request, name): # urls.py에서 정의한 변수 이름을 두번째 인자
+    context = {
+        'name': name,
+    }
+    return render(request, 'username.html', context)
+
+
+def cube(request, number):
+    result = number ** 3
+
+    context = {
+        'result': result
+    }
+    return render(request, 'cube.html', context)
+
+
+def posts(request):
+    fake = Faker()
+
+    fake_posts = []
+    for i in range(100):
+        fake_posts.append(fake.text())
+
+    context = {
+        'fake_posts': fake_posts,
+    }
+    return render(request, 'posts.html', context)

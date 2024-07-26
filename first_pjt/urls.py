@@ -24,5 +24,8 @@ urlpatterns = [
     path('', views.root),
     path('hello/', views.hello),
     path('lunch/', views.lunch),
-    path('lotto/', views.lotto), 
+    path('lotto/', views.lotto),
+    path('username/<name>/', views.username), # <변수>로 사용 (어떠한 데이터가 들어오더라도) 
+    path('cube/<int:number>/', views.cube), # <type:변수> type지정
+    path('posts/', views.posts),
 ]
