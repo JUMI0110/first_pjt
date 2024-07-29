@@ -69,3 +69,19 @@ def posts(request):
         'fake_posts': fake_posts,
     }
     return render(request, 'posts.html', context)
+
+# ping.html에서 사용자의 데이터 받아오기
+def ping(request):
+    return render(request, 'ping.html')
+
+def pong(request):
+    # raise 강제로 오류를 실행 -> 페이지 정보확인
+    # request.GET['title'] key값으로 접근
+    title = request.GET.get('title') # dictionary의 get메소드로 접근(안정적)
+    content = request.GET.get('content')
+
+    context = {
+        'title': title,
+        'content': content,
+    }
+    return render(request, 'pong.html', context)
